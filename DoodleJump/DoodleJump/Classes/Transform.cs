@@ -10,7 +10,7 @@ namespace DoodleJump.Classes
     public class Transform
     {
         public PointF pos; // координата
-        public Size size; // размер
+        public readonly Size size; // размер
 
         public Transform(PointF pos, Size size)
         {

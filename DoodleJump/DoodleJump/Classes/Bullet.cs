@@ -9,8 +9,8 @@ namespace DoodleJump.Classes
 {
     public class Bullet
     {
-        public Transform transform;
-        public Image img;
+        public readonly Transform transform;
+        public readonly Image img;
 
         
         public Bullet(PointF pos)

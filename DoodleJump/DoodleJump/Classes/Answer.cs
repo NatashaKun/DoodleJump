@@ -8,8 +8,8 @@ namespace DoodleJump.Classes
 {
     public class Answer
     {
-        public string text; // текст ответа
-        public bool correct; // верный ли он
+        public readonly string text; // текст ответа
+        public readonly bool correct; // верный ли он
 
         public Answer(string text, string correct)
         {

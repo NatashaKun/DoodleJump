@@ -9,9 +9,9 @@ namespace DoodleJump.Classes
 {
     public class Bonus
     {
-        public Transform transform;
-        public Image image;
-        public int bonusType;
+        public readonly Transform transform;
+        public readonly Image image;
+        public readonly int bonusType;
 
         public Bonus(PointF pos, int bonusType)
         {

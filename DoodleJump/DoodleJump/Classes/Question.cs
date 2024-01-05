@@ -8,8 +8,8 @@ namespace DoodleJump.Classes
 {
     public class Question
     {
-        public string text; // текст вопросов
-        public List<Answer> answers = new List<Answer>(); // список ответов
+        public readonly string text; // текст вопросов
+        public readonly List<Answer> answers = new List<Answer>(); // список ответов
 
         public Question(string text, string ans1, string cor1, string ans2, string cor2, string ans3, string cor3, string ans4, string cor4)
         {

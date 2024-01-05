@@ -9,7 +9,7 @@ namespace DoodleJump.Classes
 {
     public class Physics
     {
-        public Transform transform; // позиция и размер
+        public readonly Transform transform; // позиция и размер
         float gravity; // для прыжка
         float a; // ускорение
 
@@ -18,7 +18,7 @@ namespace DoodleJump.Classes
 
         public float dx; // изменение по х
 
-        
+
 
         public bool usedBonus, fly = false, shield = false; // для бонусов
 
@@ -45,7 +45,7 @@ namespace DoodleJump.Classes
                     Controller.GenerateStartPlat();
                     Controller.startPlatformposY = -125;
                     fly = false;
-                    
+
                 }
 
                 if (gravity > -5 && usedBonus && !shield)// отключение бонуса после ракеты и пружины
@@ -54,7 +54,7 @@ namespace DoodleJump.Classes
                     imgType = "default";
                 }
 
-                if(shield && Controller.score - sc > 200)// отключение щита через 10 платформ
+                if (shield && Controller.score - sc > 200)// отключение щита через 10 платформ
                 {
                     shield = false;
                     usedBonus = false;
@@ -84,7 +84,7 @@ namespace DoodleJump.Classes
                         Controller.RemoveEnemy(i); // удаляем монстра
                         if (shield)// если есть щит - выживаем и удаляем щит
                         {
-                            
+
                             shield = false;
                             usedBonus = false;
                             imgType = "default";
@@ -115,7 +115,7 @@ namespace DoodleJump.Classes
                     if (Math.Abs(delta.Y) + 10 <= transform.size.Height / 2 + bonus.transform.size.Height / 2)
                     {
                         //if (!usedBonus && !shield)
-                        if(!usedBonus)// если нет бонуса то можем взять
+                        if (!usedBonus)// если нет бонуса то можем взять
                         {
                             Controller.RemoveBonus(i);
                             switch (bonus.bonusType)
@@ -152,16 +152,16 @@ namespace DoodleJump.Classes
 
         public void Collide() // касание платформы
         {
-            for(int i = 0; i < Controller.platforms.Count; i++)
+            for (int i = 0; i < Controller.platforms.Count; i++)
             {
                 var platform = Controller.platforms[i];
                 // если середина персонажа по х находится в пределах платформы
-                if(transform.pos.X + transform.size.Width/2 + 5 >= platform.transform.pos.X && transform.pos.X + transform.size.Width / 2 - 5 <= platform.transform.pos.X + platform.transform.size.Width)
+                if (transform.pos.X + transform.size.Width / 2 + 5 >= platform.transform.pos.X && transform.pos.X + transform.size.Width / 2 - 5 <= platform.transform.pos.X + platform.transform.size.Width)
                 {
                     // если по у находится в пределах платформы
-                    if(transform.pos.Y + transform.size.Height + 5 >= platform.transform.pos.Y && transform.pos.Y + transform.size.Height + 5 <= platform.transform.pos.Y + platform.transform.size.Height)
+                    if (transform.pos.Y + transform.size.Height + 5 >= platform.transform.pos.Y && transform.pos.Y + transform.size.Height + 5 <= platform.transform.pos.Y + platform.transform.size.Height)
                     {
-                        if(gravity > 0) // если персонаж сверху
+                        if (gravity > 0) // если персонаж сверху
                         {
                             AddForce(10.5f);
                             if (!platform.isTouched) // если раньше не касался 
