@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
+//тест
+
 namespace DoodleJump.Classes
 {
     public static class Controller // манипуляция объектами
