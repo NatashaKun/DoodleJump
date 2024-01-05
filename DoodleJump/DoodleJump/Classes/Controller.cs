@@ -5,17 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-//тест
-
 namespace DoodleJump.Classes
 {
     public static class Controller // манипуляция объектами
     {
-        public static List<Platform> platforms = new List<Platform>();
-        public static List<SpPlatform> spPlatforms = new List<SpPlatform>();
-        public static List<Bullet> bullets = new List<Bullet>();
-        public static List<Enemy> enemies = new List<Enemy>();
-        public static List<Bonus> bonuses= new List<Bonus>();
+        public static readonly List<Platform> platforms = new List<Platform>();
+        public static readonly List<SpPlatform> spPlatforms = new List<SpPlatform>();
+        public static readonly List<Bullet> bullets = new List<Bullet>();
+        public static readonly List<Enemy> enemies = new List<Enemy>();
+        public static readonly List<Bonus> bonuses= new List<Bonus>();
         public static int startPlatformposY = 400; // для спавна платформ
         public static int score = 0; // очки
         public static Transform transform; // позиция и размер

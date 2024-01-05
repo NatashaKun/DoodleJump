@@ -11,9 +11,9 @@ namespace DoodleJump.Classes
     {
 
         Image img;
-        public Transform transform;
-        public int sizeX;
-        public int sizeY;
+        public readonly Transform transform;
+        public readonly int sizeX;
+        public readonly int sizeY;
         public bool isTouched; // было ли касание
 
         public Platform(PointF pos)

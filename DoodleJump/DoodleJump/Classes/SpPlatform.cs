@@ -10,10 +10,10 @@ namespace DoodleJump.Classes
     public class SpPlatform
     {
         Image img;
-        public Transform transform;
-        public int sizeX;
-        public int sizeY;
-        public int plType;
+        public readonly Transform transform;
+        public readonly int sizeX;
+        public readonly int sizeY;
+        public readonly int plType;
         public SpPlatform(PointF pos, int plType)
         {
             switch (plType)

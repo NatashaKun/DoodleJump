@@ -9,8 +9,8 @@ namespace DoodleJump.Classes
 {
     public class Enemy
     {
-        public Transform transform;
-        public Image image;
+        public readonly Transform transform;
+        public readonly Image image;
 
         public Enemy(PointF pos, int enemyType)
         {
