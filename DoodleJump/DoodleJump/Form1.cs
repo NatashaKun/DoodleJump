@@ -22,7 +22,7 @@ namespace DoodleJump
         public Form1()
         {
             // считывание вопросов
-            using (StreamReader sr = new StreamReader("C:\\Users\\natas\\Downloads\\Telegram Desktop\\DoodleJump\\DoodleJump\\DoodleJump\\questions.txt"))
+            using (StreamReader sr = new StreamReader("../../questions.txt"))
             {
                 string line;
                 while ((line = sr.ReadLine()) != null)
