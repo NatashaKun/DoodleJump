@@ -29,7 +29,7 @@ namespace DoodleJump.Classes
                     image = Properties.Resources.Enemy4;
                     break;
             }
-            transform = new Transform(pos, new Size(80, 80));
+            transform = new Transform(pos, new Size(60, 60));
         }
 
         public void Draw(Graphics g) // отрисовка
@@ -45,7 +45,7 @@ namespace DoodleJump.Classes
                 PointF delta = new PointF();
                 delta.X = (transform.pos.X + transform.size.Width / 2) - (bullet.transform.pos.X + bullet.transform.size.Width / 2);
                 delta.Y = (transform.pos.Y + transform.size.Height / 2) - (bullet.transform.pos.Y + bullet.transform.size.Height / 2);
-                if (Math.Abs(delta.X) + 10 <= transform.size.Width / 2 + bullet.transform.size.Width / 2) // если разность середин по х меньше чем сумма половин по х
+                if (Math.Abs(delta.X) + 5 <= transform.size.Width / 2 + bullet.transform.size.Width / 2) // если разность середин по х меньше чем сумма половин по х
                 {
                     if (Math.Abs(delta.Y) <= transform.size.Height / 2 + bullet.transform.size.Height / 2) // аналогично по y
                     {

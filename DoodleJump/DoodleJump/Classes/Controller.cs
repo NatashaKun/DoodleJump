@@ -28,7 +28,7 @@ namespace DoodleJump.Classes
         public static void CreateBonus(PointF pos)
         {
             Random r = new Random();
-            var bonusType = r.Next(1, 4);// тип бонуса
+            var bonusType = r.Next(3, 4);// тип бонуса
 
             switch (bonusType)
             {
@@ -49,8 +49,7 @@ namespace DoodleJump.Classes
 
         public static void CreateEnemy(PointF pos) // создание монстра
         {
-            // для лучшей отрисовки (чтобы монстр не был под платформой) 
-            pos.X -= 10;
+            // для лучшей отрисовки (чтобы монстр не был под платформой)
             pos.Y -= 50;
             Random r = new Random();
             var enemyType = r.Next(1, 5); // тип монстра
@@ -119,7 +118,7 @@ namespace DoodleJump.Classes
                     }
                     break;
                 case 2:// бонус
-                    c = r.Next(1, 10);
+                    c = r.Next(1, 2);
                     if (c == 1)
                     {
                         CreateBonus(pos);

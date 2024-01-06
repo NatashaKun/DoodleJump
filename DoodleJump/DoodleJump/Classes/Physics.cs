@@ -76,7 +76,7 @@ namespace DoodleJump.Classes
                 delta.X = (transform.pos.X + transform.size.Width / 2) - (enemy.transform.pos.X + enemy.transform.size.Width / 2);
                 delta.Y = (transform.pos.Y + transform.size.Height / 2) - (enemy.transform.pos.Y + enemy.transform.size.Height / 2);
                 // если разность середин по х меньше чем сумма половин по х
-                if (Math.Abs(delta.X) + 25 <= transform.size.Width / 2 + enemy.transform.size.Width / 2)
+                if (Math.Abs(delta.X) + 30 <= transform.size.Width / 2 + enemy.transform.size.Width / 2)
                 {
                     // аналогично
                     if (Math.Abs(delta.Y) + 25 <= transform.size.Height / 2 + enemy.transform.size.Height / 2)
