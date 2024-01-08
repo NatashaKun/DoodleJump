@@ -10,11 +10,23 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
+using Npgsql;
+
+
+
 namespace DoodleJump
 {
     public partial class Form1 : Form
     {
+        //static string connectionString = "Host=students.ami.nstu.ru;Username=pmi-b0408;Password=Flikaic8;Database=students";
+        //NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+        //connection.Open();
+
+        // Установка схемы по умолчанию
+        //NpgsqlCommand setSchemaCommand = new NpgsqlCommand("SET search_path TO имя_вашей_схемы", connection);
+        //setSchemaCommand.ExecuteNonQuery();
         public int num, counter; // номер персонажа, счетчик верных ответов
+        public string name;
         public static List<Question> questions = new List<Question>(); // для считывания базы вопросов
         List<string> lines = new List<string>(); // для считывания базы вопросов
         Player player;
@@ -39,6 +51,18 @@ namespace DoodleJump
 
             InitializeComponent();
 
+            //string connectionString = "Host=students.ami.nstu.ru;Username=pmi-b0408;Password=Flikaic8;Database=students";
+            //NpgsqlConnection connection = new NpgsqlConnection(connectionString);
+            //connection.Open();
+
+            //// Установка схемы по умолчанию
+            //NpgsqlCommand setSchemaCommand = new NpgsqlCommand("SET search_path TO имя_вашей_схемы", connection);
+            //setSchemaCommand.ExecuteNonQuery();
+            //форма ввода имени
+            NameForm nameForm = new NameForm();
+            nameForm.ShowDialog();
+            name = nameForm.name;
+
             Init();
             timer1 = new Timer();
             timer1.Interval = 15;
@@ -54,6 +78,9 @@ namespace DoodleJump
 
         public void Init() // начало новой игры
         {
+            
+
+
             // форма выбора персонажа
             CharacterChoice characterChoiceForm = new CharacterChoice();
             characterChoiceForm.ShowDialog();
@@ -138,12 +165,14 @@ namespace DoodleJump
                     }
                     else // неправильный ответ
                     {
+                        DB_Record(name, Controller.score);
                         Init(); // проиграл
                         timer1.Start();
                     }
                 }
                 else
                 {
+                    DB_Record(name, Controller.score);
                     Init(); // проиграл
                     timer1.Start();
                 }
@@ -152,6 +181,7 @@ namespace DoodleJump
             if ((player.physics.transform.pos.Y >= Controller.platforms[0].transform.pos.Y + 200))
             {
                 timer1.Stop();
+                DB_Record(name, Controller.score);
                 Init(); // проиграл
                 timer1.Start();
             }
@@ -205,6 +235,28 @@ namespace DoodleJump
             player.physics.CalculatePhysics(); // применение физики
             FollowPlayer(); // обновление позиций графики
             Invalidate(); // перерисовка
+        }
+
+        // функция записи данных в базу
+        public void DB_Record(string name, int score)
+        {
+            string connectionString = "Host=students.ami.nstu.ru;Username=pmi-b0408;Password=Flikaic8;Database=students";
+            string schemaName = "pmib0408";
+            string tableName = "doodlejump";
+            using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+            {
+                connection.Open();
+
+
+                string sql = $"INSERT INTO {schemaName}.{tableName} (name, score) VALUES (@name, @score)";
+
+                using (NpgsqlCommand command = new NpgsqlCommand(sql, connection))
+                {
+                    command.Parameters.AddWithValue("@name", name);
+                    command.Parameters.AddWithValue("@score", score);
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
         public void FollowPlayer() // передвижение игрока и платформ

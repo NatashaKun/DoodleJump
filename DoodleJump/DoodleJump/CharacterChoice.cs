@@ -42,5 +42,11 @@ namespace DoodleJump
             pictureBox2.Image = Properties.Resources.Icon2; 
             pictureBox3.Image = Properties.Resources.Icon3; 
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            RatingForm ratingForm = new RatingForm(); // Создаем экземпляр второй формы
+            ratingForm.Show();
+        }
     }
 }
