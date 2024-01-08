@@ -28,7 +28,7 @@ namespace DoodleJump.Classes
         public static void CreateBonus(PointF pos)
         {
             Random r = new Random();
-            var bonusType = r.Next(3, 4);// тип бонуса
+            var bonusType = r.Next(1, 4);// тип бонуса
 
             switch (bonusType)
             {
@@ -118,7 +118,7 @@ namespace DoodleJump.Classes
                     }
                     break;
                 case 2:// бонус
-                    c = r.Next(1, 2);
+                    c = r.Next(1, 10);
                     if (c == 1)
                     {
                         CreateBonus(pos);
